@@ -1,0 +1,500 @@
+:root {
+  --cor-fundo: #f3f5f9;
+  --cor-superficie: #ffffff;
+  --cor-borda: #e3e7ee;
+  --cor-texto: #172033;
+  --cor-texto-suave: #5b6472;
+  --cor-primaria: #3b5bdb;
+  --cor-primaria-escura: #2f49b4;
+  --cor-perigo: #b3261e;
+  --cor-perigo-fundo: #fdecea;
+  --cor-sucesso: #1e7d3c;
+  --cor-sucesso-fundo: #e8f5ea;
+  --cor-aviso: #8a5a00;
+  --cor-aviso-fundo: #fff4e0;
+  --cor-info: #1c5fa8;
+  --cor-info-fundo: #e5eefb;
+  --cor-laranja: #b85c00;
+  --cor-laranja-fundo: #ffe9d4;
+  --cor-roxo: #6a3aa8;
+  --cor-roxo-fundo: #ece2f9;
+  --cor-neutro-fundo: #eef0f3;
+  --raio: 12px;
+  --sombra: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.1);
+  --sombra-media: 0 4px 12px rgba(16, 24, 40, 0.08), 0 2px 4px rgba(16, 24, 40, 0.05);
+  --cor-menu: #0f172a;
+  font-size: 15px;
+}
+
+* { box-sizing: border-box; }
+/* O atributo HTML "hidden" precisa vencer qualquer `display` definido por classes (ex.: .tela-carregando
+   usa display:flex); sem esta regra, um elemento com display definido via CSS permanece visível mesmo
+   com [hidden] presente, pois a folha de estilos do site tem prioridade sobre o estilo padrão do navegador. */
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI Variable", "Segoe UI", -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+.tela-carregando {
+  display: flex; align-items: center; justify-content: center;
+  height: 100vh; color: var(--cor-texto-suave);
+}
+
+button, input, select, textarea { font: inherit; color: inherit; }
+a { color: var(--cor-primaria); }
+
+/* ---------- Login ---------- */
+.tela-login {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px;
+}
+.cartao-login {
+  width: 100%; max-width: 380px; background: var(--cor-superficie); border-radius: var(--raio);
+  box-shadow: var(--sombra); padding: 32px;
+}
+.cartao-login h1 { font-size: 1.3rem; margin: 0 0 4px; }
+.cartao-login p.subtitulo { color: var(--cor-texto-suave); margin: 0 0 24px; font-size: 0.92rem; }
+
+/* ---------- Layout geral ---------- */
+.layout { display: flex; min-height: 100vh; }
+.barra-lateral {
+  width: 232px; flex-shrink: 0; background: #16233d; color: #d7deeb;
+  display: flex; flex-direction: column; padding: 16px 0;
+}
+.barra-lateral .marca { font-weight: 700; padding: 0 20px 16px; color: #fff; font-size: 1.05rem; }
+.barra-lateral nav { display: flex; flex-direction: column; gap: 2px; flex: 1; overflow-y: auto; }
+.barra-lateral .grupo-titulo { padding: 14px 20px 4px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: #7c8aa3; }
+.barra-lateral a {
+  padding: 9px 20px; color: #cfd8e8; text-decoration: none; font-size: 0.92rem; border-left: 3px solid transparent;
+}
+.barra-lateral a:hover { background: rgba(255,255,255,0.06); }
+.barra-lateral a.ativo { background: rgba(255,255,255,0.1); border-left-color: #5b9dff; color: #fff; font-weight: 600; }
+.barra-lateral .rodape-usuario { padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; }
+.barra-lateral .rodape-usuario .nome { color: #fff; font-weight: 600; }
+.barra-lateral .rodape-usuario button { margin-top: 8px; }
+
+.conteudo { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.topo {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 14px 24px; background: var(--cor-superficie); border-bottom: 1px solid var(--cor-borda);
+}
+.topo h1 { font-size: 1.15rem; margin: 0; }
+.miolo { padding: 20px 24px; flex: 1; }
+
+/* ---------- Botões ---------- */
+.botao {
+  display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--cor-borda);
+  background: var(--cor-superficie); border-radius: 6px; padding: 7px 14px; font-size: 0.88rem;
+  cursor: pointer; line-height: 1.2; white-space: nowrap;
+}
+.botao:hover { background: #f0f2f5; }
+.botao:disabled { opacity: 0.55; cursor: default; }
+.botao.primario { background: var(--cor-primaria); border-color: var(--cor-primaria); color: #fff; }
+.botao.primario:hover { background: var(--cor-primaria-escura); }
+.botao.perigo { color: var(--cor-perigo); border-color: #eec3c0; }
+.botao.perigo:hover { background: var(--cor-perigo-fundo); }
+.botao.pequeno { padding: 4px 9px; font-size: 0.8rem; }
+.botao.texto { border-color: transparent; background: transparent; }
+.botao.texto:hover { background: #eef0f3; }
+
+/* ---------- Cartões / painéis ---------- */
+.painel { background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: var(--raio); padding: 18px 20px; margin-bottom: 16px; }
+.painel h2 { font-size: 1rem; margin: 0 0 12px; }
+.grade-cartoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.cartao-metrica { background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: var(--raio); padding: 14px 16px; }
+.cartao-metrica .valor { font-size: 1.6rem; font-weight: 700; }
+.cartao-metrica .rotulo { color: var(--cor-texto-suave); font-size: 0.82rem; }
+.cartao-metrica.alerta .valor { color: var(--cor-perigo); }
+
+/* ---------- Formulários ---------- */
+.form-grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px 16px; }
+.campo { display: flex; flex-direction: column; gap: 4px; }
+.campo.largo { grid-column: 1 / -1; }
+.campo label { font-size: 0.83rem; font-weight: 600; color: var(--cor-texto-suave); }
+.campo input, .campo select, .campo textarea {
+  border: 1px solid var(--cor-borda); border-radius: 6px; padding: 8px 10px; background: #fff; width: 100%;
+}
+.campo input:focus, .campo select:focus, .campo textarea:focus { outline: 2px solid #a9c3ec; border-color: var(--cor-primaria); }
+.campo textarea { resize: vertical; min-height: 64px; }
+.campo .erro-campo { color: var(--cor-perigo); font-size: 0.8rem; }
+.campo.invalido input, .campo.invalido select, .campo.invalido textarea { border-color: var(--cor-perigo); }
+.campo-checkbox { display: flex; align-items: center; gap: 8px; flex-direction: row; }
+.campo-checkbox input { width: auto; }
+.acoes-form { display: flex; gap: 10px; margin-top: 18px; }
+.lista-multisel {
+  border: 1px solid var(--cor-borda); border-radius: 6px; max-height: 260px; overflow-y: auto;
+  padding: 4px; background: #fff; display: flex; flex-direction: column;
+}
+.campo .lista-multisel label {
+  display: flex; align-items: flex-start; gap: 10px; width: 100%; box-sizing: border-box;
+  padding: 7px 8px; font-weight: 400; font-size: 0.9rem; border-radius: 4px; cursor: pointer; line-height: 1.3;
+}
+.lista-multisel label:hover { background: #f0f2f5; }
+.lista-multisel input[type="checkbox"] { flex: 0 0 16px; width: 16px; height: 16px; margin: 2px 0 0; }
+.lista-multisel .rotulo-opcao { flex: 1 1 auto; min-width: 0; }
+.lista-multisel .inativo .rotulo-opcao { color: var(--cor-texto-suave); font-style: italic; }
+.multisel-atalhos { display: flex; gap: 8px; margin-bottom: 6px; }
+.multisel-busca { margin-bottom: 6px; }
+.multisel-filtro-tipo { margin-bottom: 6px; }
+.selecao-filtro-tipo { margin-bottom: 4px; }
+.campo .dica-campo { color: var(--cor-texto-suave); font-size: 0.8rem; }
+.mensagem-erro-geral { background: var(--cor-perigo-fundo); color: var(--cor-perigo); border-radius: 6px; padding: 10px 12px; margin-bottom: 14px; font-size: 0.9rem; }
+.mensagem-aviso { background: var(--cor-aviso-fundo); color: var(--cor-aviso); border-radius: 6px; padding: 10px 12px; margin-bottom: 14px; font-size: 0.88rem; }
+
+/* ---------- Filtros / barra de ferramentas ---------- */
+.barra-ferramentas { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+.barra-ferramentas input[type="search"], .barra-ferramentas select { border: 1px solid var(--cor-borda); border-radius: 6px; padding: 7px 10px; background: #fff; }
+.barra-ferramentas .espaco { flex: 1; }
+
+/* ---------- Tabelas ---------- */
+table.tabela { width: 100%; border-collapse: collapse; background: var(--cor-superficie); }
+table.tabela th, table.tabela td { padding: 9px 12px; border-bottom: 1px solid var(--cor-borda); text-align: left; font-size: 0.89rem; }
+table.tabela th { color: var(--cor-texto-suave); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.02em; cursor: pointer; user-select: none; }
+table.tabela th.ordenavel:hover { color: var(--cor-texto); }
+table.tabela tbody tr:hover { background: #f7f8fa; }
+table.tabela td.acoes { white-space: nowrap; text-align: right; }
+.wrap-tabela { overflow-x: auto; border: 1px solid var(--cor-borda); border-radius: var(--raio); }
+.wrap-tabela table.tabela { border: none; border-radius: 0; }
+.wrap-tabela .wrap-tabela { border: none; }
+.paginacao { display: flex; align-items: center; gap: 10px; justify-content: flex-end; margin-top: 12px; font-size: 0.86rem; color: var(--cor-texto-suave); }
+.vazio { padding: 28px; text-align: center; color: var(--cor-texto-suave); }
+
+/* ---------- Selo de situação ---------- */
+.selo { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 0.76rem; font-weight: 600; background: var(--cor-neutro-fundo); color: var(--cor-texto-suave); }
+.selo.ativo, .selo.confirmada, .selo.confirmado, .selo.aprovada, .selo.concluida, .selo.concluido { background: var(--cor-sucesso-fundo); color: var(--cor-sucesso); }
+.selo.inativo, .selo.cancelada, .selo.cancelado, .selo.recusada { background: var(--cor-perigo-fundo); color: var(--cor-perigo); }
+.selo.planejada, .selo.planejado, .selo.planejamento, .selo.solicitada, .selo.pausado, .selo.em_andamento { background: var(--cor-aviso-fundo); color: var(--cor-aviso); }
+
+/* Projetos: situação com cores próprias (ativo = azul, pausado = laranja) em vez do
+   verde/amarelo padrão usado nas demais telas. */
+.selo.ativo.selo-projeto { background: var(--cor-info-fundo); color: var(--cor-info); }
+.selo.pausado.selo-projeto { background: var(--cor-laranja-fundo); color: var(--cor-laranja); }
+.selo.planejamento.selo-projeto { background: var(--cor-roxo-fundo); color: var(--cor-roxo); }
+
+/* ---------- Detalhe ---------- */
+.grade-detalhe { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px 20px; margin-bottom: 6px; }
+.item-detalhe .rotulo { font-size: 0.78rem; color: var(--cor-texto-suave); text-transform: uppercase; letter-spacing: 0.02em; }
+.item-detalhe .valor { font-size: 0.95rem; }
+
+/* ---------- Grade de dias da escala (quarto pedido de ajustes): profissional × data × horário ---------- */
+.grade-escala-campo { margin-top: 18px; }
+.form-grade > .grade-escala-campo { grid-column: 1 / -1; }
+.grade-escala-campo > label { display: block; font-size: 0.86rem; font-weight: 600; margin-bottom: 8px; }
+.grade-escala-add { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; }
+.grade-escala-add select { min-width: 240px; }
+.grade-escala-scroll { overflow-x: auto; border: 1px solid var(--cor-borda); border-radius: var(--raio); max-width: 100%; }
+table.tabela-grade-escala { border-collapse: collapse; font-size: 0.82rem; }
+table.tabela-grade-escala th, table.tabela-grade-escala td { border: 1px solid var(--cor-borda); padding: 4px 6px; white-space: nowrap; }
+table.tabela-grade-escala thead th { background: var(--cor-neutro-fundo); font-weight: 600; text-align: center; line-height: 1.3; }
+/* Quinto pedido de ajustes (outubro): fim de semana precisa se destacar claramente na tabela de
+   escala — não só o cabeçalho, a coluna inteira (cada célula do dia). */
+table.tabela-grade-escala thead th.fim-de-semana,
+table.tabela-grade-escala td.col-celula.fim-de-semana { background: #ffe2b8; }
+table.tabela-grade-escala thead th.fim-de-semana { color: #7a4a00; }
+table.tabela-grade-escala td.col-profissional { position: sticky; left: 0; background: var(--cor-superficie); min-width: 220px; white-space: normal; z-index: 1; }
+table.tabela-grade-escala thead th.col-profissional { position: sticky; left: 0; z-index: 2; min-width: 220px; }
+table.tabela-grade-escala td.col-celula { padding: 2px; text-align: center; }
+table.tabela-grade-escala td.col-celula select { width: 72px; font-size: 0.78rem; padding: 2px; background: transparent; }
+.grade-escala-linha-nome { display: flex; align-items: center; justify-content: space-between; gap: 6px; font-weight: 600; }
+.grade-escala-preencher { display: flex; gap: 6px; align-items: center; margin-top: 4px; font-weight: 400; flex-wrap: wrap; }
+.grade-escala-preencher select, .grade-escala-preencher input { font-size: 0.78rem; padding: 2px 4px; }
+.grade-escala-preencher input[type="number"] { width: 48px; }
+.grade-escala-fds { display: inline-flex; align-items: center; gap: 4px; font-size: 0.78rem; }
+.grade-escala-vazia { padding: 16px; color: var(--cor-texto-suave); font-size: 0.88rem; }
+.grade-detalhe-escala { margin-top: 10px; }
+.lista-conflitos { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.lista-conflitos li { background: var(--cor-perigo-fundo); color: var(--cor-perigo); border-radius: 6px; padding: 8px 10px; font-size: 0.87rem; }
+.linha-historico { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--cor-borda); font-size: 0.86rem; }
+.linha-historico .quando { color: var(--cor-texto-suave); white-space: nowrap; }
+
+/* ---------- Modal ---------- */
+.sobreposicao { position: fixed; inset: 0; background: rgba(20,24,33,0.45); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 50; }
+.modal { background: #fff; border-radius: var(--raio); max-width: 520px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 22px; }
+.modal h2 { margin-top: 0; font-size: 1.05rem; }
+
+/* ---------- Toasts ---------- */
+.area-toasts { position: fixed; top: 16px; right: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 100; }
+.toast { background: #1f2530; color: #fff; padding: 10px 14px; border-radius: 6px; font-size: 0.88rem; box-shadow: var(--sombra); max-width: 340px; }
+.toast.erro { background: var(--cor-perigo); }
+.toast.sucesso { background: var(--cor-sucesso); }
+
+/* ---------- Linha do tempo (Gantt) ---------- */
+.timeline-cabecalho { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.timeline-legenda { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.8rem; color: var(--cor-texto-suave); align-items: center; }
+.timeline-legenda .marca { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 4px; vertical-align: middle; }
+.timeline-scroll {
+  overflow: auto; border: 1px solid var(--cor-borda); border-radius: var(--raio); background: var(--cor-superficie);
+  /* Altura limitada à tela: com muitos profissionais, a rolagem (inclusive a horizontal) fica sempre
+     visível dentro da própria caixa, sem precisar descer a página inteira para alcançá-la. */
+  max-height: 65vh;
+}
+.timeline-grade {
+  display: grid;
+  grid-template-columns: 200px repeat(var(--dias), minmax(34px, 1fr));
+  min-width: max-content;
+}
+.tl-canto { position: sticky; left: 0; top: 0; z-index: 3; background: var(--cor-superficie); border-bottom: 1px solid var(--cor-borda); border-right: 1px solid var(--cor-borda); }
+.tl-dia-cab {
+  border-bottom: 1px solid var(--cor-borda); border-right: 1px solid #edeff2; text-align: center; font-size: 0.72rem;
+  padding: 5px 2px; color: var(--cor-texto-suave); position: sticky; top: 0; background: var(--cor-superficie); z-index: 2;
+}
+.tl-dia-cab.hoje { background: #e7f0ff; color: var(--cor-primaria-escura); font-weight: 700; }
+.tl-dia-cab.fim-de-semana { background: #f7f8fa; }
+.tl-dia-cab .dia-num { display: block; font-size: 0.88rem; font-weight: 600; }
+.tl-linha-nome {
+  position: sticky; left: 0; background: var(--cor-superficie); border-right: 1px solid var(--cor-borda);
+  border-bottom: 1px solid var(--cor-borda); padding: 8px 10px; font-size: 0.85rem; display: flex; flex-direction: column; z-index: 1;
+}
+.tl-linha-nome .cargo { color: var(--cor-texto-suave); font-size: 0.76rem; }
+.tl-linha-nome.inativo { color: var(--cor-texto-suave); font-style: italic; }
+.tl-celula { border-bottom: 1px solid var(--cor-borda); border-right: 1px solid #edeff2; position: relative; min-height: 40px; }
+.tl-celula.fim-de-semana { background: #fafbfc; }
+.tl-celula.hoje-col { background: #f2f7ff; }
+.tl-barra {
+  position: absolute; top: 5px; bottom: 5px; left: 1px; right: 1px; border-radius: 4px; overflow: hidden;
+  display: flex; align-items: center; padding: 0 6px; font-size: 0.72rem; color: #fff; cursor: pointer; white-space: nowrap;
+}
+.tl-barra.tipo-escala { background: var(--cor-primaria); }
+.tl-barra.tipo-folga { background: #8a6d00; }
+.tl-barra.tipo-treinamento { background: #4a7c3f; }
+.tl-barra.status-planejada, .tl-barra.status-planejado, .tl-barra.status-solicitada { opacity: 0.55; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.25) 0 6px, transparent 6px 12px); }
+.tl-barra.status-cancelada, .tl-barra.status-cancelado, .tl-barra.status-recusada { opacity: 0.35; text-decoration: line-through; }
+/* Ponto 6 do segundo pedido de ajustes: concluída continua na linha do tempo, mas com cor própria
+   (em vez da cor do tipo), para distinguir de uma escala/treinamento ainda em curso. */
+.tl-barra.status-concluida, .tl-barra.status-concluido { background: #8d9196; opacity: 0.6; }
+.tl-barra.conflito { outline: 2px solid var(--cor-perigo); outline-offset: -2px; }
+.tl-barra.feriado-automatico { background: #946200; cursor: default; background-image: repeating-linear-gradient(-45deg, rgba(255,255,255,0.18) 0 6px, transparent 6px 12px); }
+.tl-sem-linhas { grid-column: 1 / -1; }
+
+@media (max-width: 860px) {
+  .barra-lateral { position: fixed; z-index: 40; height: 100%; transform: translateX(-100%); transition: transform 0.15s; }
+  .barra-lateral.aberta { transform: translateX(0); }
+  .botao-menu { display: inline-flex; }
+}
+.botao-menu { display: none; }
+
+/* ---------- Seleção de dias da semana ---------- */
+.campo-dias-semana { display: flex; flex-direction: column; gap: 8px; }
+.dias-semana-presets { display: flex; gap: 8px; }
+.dias-semana-caixas { display: flex; gap: 6px; flex-wrap: wrap; }
+.campo .dia-semana-caixa {
+  display: flex; align-items: center; gap: 6px; border: 1px solid var(--cor-borda); border-radius: 6px;
+  padding: 6px 10px; font-size: 0.85rem; font-weight: 400; color: var(--cor-texto); cursor: pointer; background: #fff;
+}
+.campo .dia-semana-caixa.marcado { background: #e7f0ff; border-color: var(--cor-primaria); color: var(--cor-primaria-escura); font-weight: 600; }
+.dia-semana-caixa input { width: auto; }
+
+/* ---------- Feriados na linha do tempo ---------- */
+.tl-dia-cab.feriado-nacional { background: #fde3b8; color: #7a4a00; }
+.tl-dia-cab.feriado-regional { background: #e6def9; color: #4b2f8f; }
+.tl-dia-cab.feriado-nacional.feriado-regional { background: linear-gradient(135deg, #fde3b8 50%, #e6def9 50%); }
+.tl-dia-cab .marca-feriado { display: block; font-size: 0.6rem; line-height: 1; font-weight: 700; }
+.tl-celula.feriado-nacional { background: #fff2dc; }
+.tl-celula.feriado-regional { background: #f1ecfc; }
+.timeline-legenda .marca.feriado-n { background: #fde3b8; border: 1px solid #e0b877; }
+.timeline-legenda .marca.feriado-r { background: #e6def9; border: 1px solid #b7a5e6; }
+.selo-uf { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; background: #e6def9; color: #4b2f8f; }
+.selo-uf.nacional { background: #fde3b8; color: #7a4a00; }
+
+.tl-dia-cab.feriado-municipal { background: #d7f0e8; color: #14634a; }
+.tl-celula.feriado-municipal { background: #eaf8f2; }
+.timeline-legenda .marca.feriado-m { background: #d7f0e8; border: 1px solid #8fcbb3; }
+
+/* ================= Painel (dashboard) — tratamento visual próprio ================= */
+.painel-cabecalho {
+  display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 20px;
+}
+.painel-cabecalho h2 { margin: 0; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.01em; }
+.painel-cabecalho .data-hoje { color: var(--cor-texto-suave); font-size: 0.92rem; }
+
+.grade-metricas { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 24px; align-items: stretch; }
+.metrica {
+  background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: 10px;
+  padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; position: relative; overflow: hidden;
+}
+.metrica .numero { font-size: 1.9rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; letter-spacing: -0.02em; }
+.metrica .rotulo { color: var(--cor-texto-suave); font-size: 0.8rem; }
+/* O cartão de conflitos é o único tratamento "ousado" da tela: maior, destacado, para onde o olho deve ir primeiro. */
+.metrica.metrica-urgente {
+  grid-column: span 2; flex-direction: row; align-items: center; justify-content: space-between;
+  background: var(--cor-perigo); border-color: var(--cor-perigo);
+}
+.metrica.metrica-urgente.sem-conflito { background: var(--cor-sucesso); border-color: var(--cor-sucesso); }
+.metrica.metrica-urgente .numero { color: #fff; font-size: 2.4rem; }
+.metrica.metrica-urgente .rotulo { color: rgba(255,255,255,0.85); }
+.metrica.metrica-urgente svg { opacity: 0.85; flex-shrink: 0; }
+@media (max-width: 640px) { .metrica.metrica-urgente { grid-column: 1 / -1; } }
+
+.secao { background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-left-width: 4px; border-radius: 8px; padding: 16px 18px; margin-bottom: 14px; }
+.secao-cabecalho { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.secao-cabecalho svg { flex-shrink: 0; }
+.secao-cabecalho h2 { margin: 0; font-size: 0.95rem; font-weight: 700; }
+.secao-cabecalho .contagem { margin-left: auto; color: var(--cor-texto-suave); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+.secao--escalas { border-left-color: var(--cor-primaria); }
+.secao--escalas .secao-cabecalho svg { color: var(--cor-primaria); }
+.secao--feriados { border-left-color: #8a6d00; }
+.secao--feriados .secao-cabecalho svg { color: #8a6d00; }
+.secao--folgas { border-left-color: #6b7f3a; }
+.secao--folgas .secao-cabecalho svg { color: #6b7f3a; }
+.secao--treinamentos { border-left-color: #4a7c3f; }
+.secao--treinamentos .secao-cabecalho svg { color: #4a7c3f; }
+.secao--conflitos { border-left-color: var(--cor-perigo); }
+.secao--conflitos .secao-cabecalho svg { color: var(--cor-perigo); }
+
+.linha-item { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px dashed var(--cor-borda); font-size: 0.89rem; align-items: baseline; }
+.linha-item:last-child { border-bottom: none; }
+.linha-item .quando { color: var(--cor-texto-suave); white-space: nowrap; font-variant-numeric: tabular-nums; min-width: 92px; }
+.secao .vazio-secao { color: var(--cor-texto-suave); font-size: 0.88rem; padding: 4px 0; }
+
+
+/* =====================================================================
+   Tema profissional (sétimo pedido): visual inspirado em sistemas de escala
+   — menu lateral escuro com ícones, cartões com sombra suave, tabelas limpas,
+   cabeçalhos de seção, Gantt com barras arredondadas.
+   ===================================================================== */
+body { font-size: 0.95rem; line-height: 1.45; }
+h1, h2, h3 { letter-spacing: -0.01em; }
+
+/* Login */
+.tela-login { background: radial-gradient(1200px 600px at 10% -10%, #dfe6ff 0, transparent 60%), radial-gradient(900px 500px at 100% 110%, #e6f4ff 0, transparent 55%), var(--cor-fundo); }
+.cartao-login { max-width: 400px; padding: 36px 34px; border: 1px solid var(--cor-borda); box-shadow: 0 20px 40px -12px rgba(16, 24, 40, 0.18); border-radius: 16px; }
+.login-logo { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; font-size: 1.4rem; color: #fff; background: linear-gradient(135deg, #5b7cff, #3b5bdb); box-shadow: 0 6px 14px rgba(59, 91, 219, 0.35); margin-bottom: 18px; }
+.cartao-login h1 { font-size: 1.45rem; }
+.cartao-login .botao.primario { padding: 10px 14px; font-size: 0.95rem; }
+
+/* Menu lateral */
+.barra-lateral { width: 248px; background: var(--cor-menu); background-image: linear-gradient(180deg, #131c35 0%, #0f172a 100%); padding: 18px 0 0; }
+.barra-lateral .marca { display: flex; align-items: center; gap: 10px; padding: 0 20px 18px; font-size: 1.02rem; letter-spacing: -0.01em; }
+.marca-logo { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font-weight: 800; color: #fff; background: linear-gradient(135deg, #5b7cff, #3b5bdb); box-shadow: 0 4px 10px rgba(59, 91, 219, 0.4); }
+.barra-lateral nav { padding: 0 12px; gap: 2px; }
+.barra-lateral .grupo-titulo { padding: 18px 10px 6px; font-size: 0.68rem; letter-spacing: 0.09em; color: #66769a; font-weight: 700; }
+.barra-lateral a { display: flex; align-items: center; gap: 11px; padding: 9px 12px; border-radius: 9px; border-left: none; color: #b6c2db; font-weight: 500; transition: background 0.12s, color 0.12s; }
+.barra-lateral a:hover { background: rgba(255, 255, 255, 0.07); color: #fff; }
+.barra-lateral a.ativo { background: linear-gradient(90deg, rgba(91, 124, 255, 0.28), rgba(91, 124, 255, 0.12)); color: #fff; font-weight: 600; box-shadow: inset 3px 0 0 #7b96ff; }
+.nav-icone { display: inline-flex; opacity: 0.85; }
+.barra-lateral a.ativo .nav-icone { opacity: 1; color: #9db1ff; }
+.barra-lateral .rodape-usuario { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 8px; padding: 14px 16px; border-top: 1px solid rgba(255, 255, 255, 0.08); background: rgba(0, 0, 0, 0.18); }
+.avatar { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-size: 0.78rem; font-weight: 700; color: #fff; background: linear-gradient(135deg, #7b96ff, #3b5bdb); flex-shrink: 0; }
+.info-usuario { flex: 1; min-width: 0; line-height: 1.25; }
+.info-usuario .nome { color: #fff; font-weight: 600; font-size: 0.86rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.info-usuario .perfil { color: #8a99b8; font-size: 0.74rem; }
+.barra-lateral .rodape-usuario button.botao-sair { margin: 0; background: transparent; color: #cfd8e8; border-color: rgba(255, 255, 255, 0.2); }
+.barra-lateral .rodape-usuario button.botao-sair:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* Topo e conteúdo */
+.topo { padding: 16px 28px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--cor-borda); }
+.topo h1 { font-size: 1.25rem; font-weight: 700; }
+.miolo { padding: 24px 28px 40px; max-width: 1600px; width: 100%; }
+
+/* Botões */
+.botao { border-radius: 9px; padding: 8px 15px; font-weight: 500; box-shadow: 0 1px 1px rgba(16, 24, 40, 0.04); transition: background 0.12s, border-color 0.12s, box-shadow 0.12s, transform 0.05s; }
+.botao:hover { background: #f3f5f9; border-color: #d3d9e4; }
+.botao:active { transform: translateY(1px); }
+.botao.primario { background: linear-gradient(180deg, #4a6af0, #3b5bdb); border-color: #3552cc; box-shadow: 0 1px 2px rgba(59, 91, 219, 0.4); }
+.botao.primario:hover { background: linear-gradient(180deg, #3f60e6, #2f49b4); }
+.botao:focus-visible { outline: 3px solid rgba(59, 91, 219, 0.3); outline-offset: 1px; }
+.botao.pequeno { border-radius: 7px; }
+
+/* Cartões */
+.painel { border-radius: var(--raio); padding: 22px 24px; box-shadow: var(--sombra); border-color: var(--cor-borda); }
+.painel h2 { font-size: 1.05rem; font-weight: 700; }
+.metrica, .cartao-metrica { border-radius: 14px; box-shadow: var(--sombra); transition: box-shadow 0.15s, transform 0.15s; }
+.metrica:hover { box-shadow: var(--sombra-media); transform: translateY(-1px); }
+.metrica .numero { color: #172033; }
+.metrica .rotulo { font-weight: 500; }
+.secao { border-radius: 14px; box-shadow: var(--sombra); border-left-width: 1px; border-top: 3px solid var(--cor-primaria); }
+.secao--feriados { border-top-color: #b8860b; }
+.secao--folgas { border-top-color: #6b7f3a; }
+.secao--treinamentos { border-top-color: #4a7c3f; }
+.secao--conflitos { border-top-color: var(--cor-perigo); }
+.secao--escalas { border-top-color: var(--cor-primaria); }
+.secao-cabecalho h2 { font-size: 0.98rem; }
+.painel-cabecalho h2 { font-size: 1.5rem; }
+.linha-item { padding: 10px 0; }
+
+/* Formulários */
+.campo label { color: #3d4860; font-size: 0.8rem; letter-spacing: 0.01em; }
+.campo input, .campo select, .campo textarea { border-radius: 9px; padding: 9px 11px; border-color: #d6dce7; transition: border-color 0.12s, box-shadow 0.12s; }
+.campo input:hover, .campo select:hover, .campo textarea:hover { border-color: #b9c3d6; }
+.campo input:focus, .campo select:focus, .campo textarea:focus { outline: none; border-color: var(--cor-primaria); box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.18); }
+.barra-ferramentas input[type="search"], .barra-ferramentas select { border-radius: 9px; padding: 8px 12px; border-color: #d6dce7; }
+.barra-ferramentas input[type="search"]:focus, .barra-ferramentas select:focus { outline: none; border-color: var(--cor-primaria); box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.18); }
+.acoes-form { padding-top: 18px; border-top: 1px solid var(--cor-borda); margin-top: 22px; }
+.lista-multisel, .grade-escala-scroll { border-radius: 10px; }
+.campo .dia-semana-caixa { border-radius: 999px; padding: 6px 13px; }
+.campo .dia-semana-caixa.marcado { background: #e8edff; border-color: #aab8f5; color: #2f49b4; }
+
+/* Tabelas */
+.wrap-tabela { border-radius: var(--raio); box-shadow: var(--sombra); background: var(--cor-superficie); }
+table.tabela th { background: #f8f9fc; color: #5a6682; font-size: 0.72rem; letter-spacing: 0.06em; padding: 11px 14px; border-bottom: 1px solid var(--cor-borda); }
+table.tabela td { padding: 12px 14px; border-bottom: 1px solid #eef1f6; }
+table.tabela tbody tr { transition: background 0.1s; }
+table.tabela tbody tr:hover { background: #f5f7ff; }
+table.tabela tbody tr:last-child td { border-bottom: none; }
+.paginacao { margin-top: 14px; }
+
+/* Selos */
+.selo { padding: 3px 10px; font-size: 0.74rem; letter-spacing: 0.01em; display: inline-flex; align-items: center; gap: 6px; }
+.selo::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.8; }
+
+/* Modal e toasts */
+.sobreposicao { backdrop-filter: blur(3px); background: rgba(15, 23, 42, 0.5); }
+.modal { border-radius: 16px; padding: 26px; box-shadow: 0 24px 48px -12px rgba(16, 24, 40, 0.35); }
+.toast { border-radius: 10px; box-shadow: var(--sombra-media); padding: 12px 16px; }
+
+/* Grade de dias da escala */
+table.tabela-grade-escala thead th { background: #f3f5fa; color: #4a566f; }
+table.tabela-grade-escala th, table.tabela-grade-escala td { border-color: #e6eaf2; }
+
+/* Linha do tempo (Gantt) */
+.timeline-scroll { border-radius: var(--raio); box-shadow: var(--sombra); }
+.tl-canto { background: #f8f9fc; }
+.tl-dia-cab { background: #f8f9fc; border-right-color: #eef1f6; padding: 7px 2px; font-weight: 500; }
+.tl-dia-cab .dia-num { color: var(--cor-texto); font-size: 0.92rem; }
+.tl-dia-cab.hoje { background: var(--cor-primaria); color: #e6ecff; }
+.tl-dia-cab.hoje .dia-num { color: #fff; }
+.tl-dia-cab.fim-de-semana { background: #eef1f7; }
+.tl-linha-nome { flex-direction: row; align-items: center; gap: 10px; padding: 8px 12px; }
+.avatar-mini { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center; font-size: 0.68rem; font-weight: 700; color: #3b4a7a; background: #e4e9fb; }
+.nome-bloco { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+.nome-prof { font-weight: 600; font-size: 0.85rem; overflow: hidden; text-overflow: ellipsis; }
+.tl-celula { border-right-color: #f0f2f7; }
+.tl-celula.fim-de-semana { background: #f8f9fc; }
+.tl-celula.hoje-col { background: #eef3ff; box-shadow: inset 1px 0 0 rgba(59, 91, 219, 0.35), inset -1px 0 0 rgba(59, 91, 219, 0.35); }
+.tl-barra { border-radius: 7px; font-weight: 600; box-shadow: 0 1px 2px rgba(16, 24, 40, 0.18); transition: filter 0.12s, transform 0.12s; }
+.tl-barra:hover { filter: brightness(1.08); transform: translateY(-1px); z-index: 5; }
+.tl-barra.tipo-escala { background: linear-gradient(180deg, #4f6ef2, #3b5bdb); }
+.tl-barra.tipo-folga { background: linear-gradient(180deg, #e0a526, #c68a0b); }
+.tl-barra.tipo-treinamento { background: linear-gradient(180deg, #34a876, #1f8a5c); }
+.tl-barra.status-concluida, .tl-barra.status-concluido { background: #98a2b3; }
+.timeline-legenda { gap: 18px; }
+.timeline-legenda .marca { border-radius: 4px; width: 12px; height: 12px; }
+
+/* Barras de rolagem discretas */
+.timeline-scroll, .wrap-tabela, .grade-escala-scroll, .barra-lateral nav { scrollbar-width: thin; scrollbar-color: #c4cbd9 transparent; }
+.barra-lateral nav { scrollbar-color: #33415f transparent; }
+
+@media (max-width: 860px) {
+  .miolo { padding: 16px 14px 32px; }
+  .topo { padding: 12px 14px; }
+  .barra-lateral { width: 270px; box-shadow: 8px 0 30px rgba(0, 0, 0, 0.35); }
+}
+@media print {
+  .barra-lateral, .topo, .barra-ferramentas, .acoes-form { display: none !important; }
+  .miolo { padding: 0; }
+}
+
+/* Participantes e horários do treinamento */
+#campo-horarios > label { font-size: 0.8rem; font-weight: 600; color: #3d4860; }
+.ajuda { color: var(--cor-texto-suave); font-size: 0.82rem; margin: 2px 0 8px; }
+.linha-trein { background: #fafbfe; }
+.linha-trein .rotulo { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5a6682; margin: 10px 0 4px; }
+.linha-trein select, .linha-trein input[type="time"] { border: 1px solid #d6dce7; border-radius: 9px; padding: 8px 10px; background: #fff; width: auto; }
+.linha-trein > div:first-child select { width: 100%; }
+.linha-trein input[type="checkbox"] { width: auto; }
+.linha-trein label { font-size: 0.85rem; padding: 4px 10px; border: 1px solid #d6dce7; border-radius: 999px; background: #fff; cursor: pointer; }
+.timeline-cabecalho select, .timeline-cabecalho input { border: 1px solid #d6dce7; border-radius: 9px; padding: 7px 10px; background: #fff; font-size: 0.88rem; }

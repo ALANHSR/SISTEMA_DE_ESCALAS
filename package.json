@@ -1,0 +1,23 @@
+{
+  "name": "sistema-escalas",
+  "version": "1.0.0",
+  "description": "Controle de escalas, folgas e treinamentos com linha do tempo (Gantt)",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server/index.ts",
+    "dev": "node --watch --disable-warning=ExperimentalWarning src/server/index.ts",
+    "migrate": "node --disable-warning=ExperimentalWarning src/server/migrate.ts",
+    "seed": "node --disable-warning=ExperimentalWarning src/server/seed.ts",
+    "criar-admin": "node --disable-warning=ExperimentalWarning src/server/criar-admin.ts",
+    "test": "node --test --disable-warning=ExperimentalWarning \"tests/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit",
+    "lint": "node scripts/lint.mjs",
+    "build": "npm run typecheck && npm run lint && npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "typescript": "^5.8.0"
+  }
+}
